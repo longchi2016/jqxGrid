@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/app.css">
     <script src="scripts/jquery-3.0.0.min.js"></script>
+    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
     <script src="lswidgets/jqx-grid.js"></script>
     <script>
         $(document).ready(function(){
-            $("#mygrid").jqxGrid();
+            $("#mygrid").jqxGrid('init');
         });
     </script>
 </head>
 
 <body>
 
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
+    <div class="container">
+        <h2>Jquery Grid Widgets</h2>
+        <p>This table is responsive. </p>
 
-    <div id="mygrid"></div>
-
+        <div id="mygrid"></div>
+    </div>
 
 </body>
 
