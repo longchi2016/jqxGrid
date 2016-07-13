@@ -10,8 +10,11 @@
  */
 //
 
+(function ($) {
+   
+    $.fn.jqxGrid = function() {
+        
+        this.append("<table>");
+        
 
-$.fn.jqxGrid = Function (options){
-    $("#mygrid").html("<div class='table'><tr><td>1</td><td>2</td><td>3</td></tr> </div>");
-
-};
+} (jQuery));
