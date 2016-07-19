@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/app.css">
     <script src="scripts/jquery-3.0.0.min.js"></script>
-    <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+    <script src="styles/bootstrap/js/bootstrap-v2.min.js"></script>
     <script src="lswidgets/jqx-grid.js"></script>
     <script>
+        // $("#mygrid").jqxGrid('init');
+
         $(document).ready(function(){
-            $("#mygrid").jqxGrid('init');
+
+            $("#mygrid").jqxGrid({
+                backColor: 'orange',
+                color: 'white'
+            });
         });
     </script>
 </head>
@@ -22,7 +28,19 @@
         <h2>Jquery Grid Widgets</h2>
         <p>This table is responsive. </p>
 
-        <div id="mygrid"></div>
+        <div id="mygrid">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Family</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>

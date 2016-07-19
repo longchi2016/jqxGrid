@@ -12,29 +12,26 @@
 
 (function ($) {
 
-    var methods = {
-        init: function (options) {
-            //alert("Hi this a new plugin.");
-            var tableDiv = $("<table />").addClass("table table-hover table-responsive").append("<thead><tr><th>Code</th><th>Name</th><th>Family</th></tr></thead>");
-            tableDiv.append("<tbody><tr><td>1</td><td>Ali</td><td>Ahmadi</td></tr><tr><td>2</td><td>nasim</td><td>maleki</td></tr><tr><td>3</td><td>Aioub</td><td>Amini</td></tr></tbody>");
+    $.fn.jqxGrid = function (options) {
 
-            this.append(tableDiv);
-            return;
-        }
-    };
+        // Default options
+        var settings = $.extend({
+            backColor: 'yellow',
+            color: 'black'
+        }, options);
 
-    $.fn.jqxGrid = function (method) {
+        this.find('table').addClass("table table-hover table-responsive");
+        this.find('tbody').append("<tr><td>1</td><td>Ali</td><td>Ahmadi</td></tr><tr><td>2</td><td>nasim</td><td>maleki</td></tr><tr><td>3</td><td>Aioub</td><td>Amini</td></tr>");
+        this.find('thead').css({ 'background-color': settings.backColor, 'color': settings.color });
 
-        // Method calling logic
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error('Method ' + method + ' does not exist on jQuery.jqxGrid');
-        }
 
-    };
+        var source =
+            {
+                localdata: data,
+                datatype: "json"
+            };
+
+
+    }
 
 } (jQuery));
-
