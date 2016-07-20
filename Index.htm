@@ -14,9 +14,17 @@
 
         $(document).ready(function(){
 
+            var url = "/demos/data.json";
+
             $("#mygrid").jqxGrid({
                 backColor: 'orange',
-                color: 'white'
+                color: 'white',
+                datafields: [
+                    { name: 'Code' , type: 'int' },
+                    { name: 'Name' },
+                    { name: 'Family'}
+                ],
+                url: url
             });
         });
     </script>

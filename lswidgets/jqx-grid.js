@@ -24,13 +24,25 @@
         this.find('tbody').append("<tr><td>1</td><td>Ali</td><td>Ahmadi</td></tr><tr><td>2</td><td>nasim</td><td>maleki</td></tr><tr><td>3</td><td>Aioub</td><td>Amini</td></tr>");
         this.find('thead').css({ 'background-color': settings.backColor, 'color': settings.color });
 
+        var dataRows = {
+
+        };
 
         var source =
             {
-                localdata: data,
-                datatype: "json"
+                datatype: "json",
+                headerfields: options.datafields,
+                url: options.url,
             };
 
+        function createTableBody(source) {
+            var tr;
+            for (var i = 0; i < source.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + source[i] + "</td>");
+            }
+            this.find('tbody').append(tr);
+        };
 
     }
 
