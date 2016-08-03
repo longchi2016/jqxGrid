@@ -17,14 +17,10 @@
             var url = "/demos/data.json";
 
             $("#mygrid").jqxGrid({
-                backColor: 'orange',
-                color: 'white',
-                datafields: [
-                    { name: 'Code' , type: 'int' },
-                    { name: 'Name' },
-                    { name: 'Family'}
-                ],
-                url: url
+                backColor: 'yellow',
+                color: 'black',
+                checkbox: false,
+                source: { url: url, debugDelay: 1000 }
             });
         });
     </script>
