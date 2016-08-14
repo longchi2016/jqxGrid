@@ -10,42 +10,19 @@
     <script src="styles/bootstrap/js/bootstrap-v2.min.js"></script>
     <script src="lswidgets/jqx-grid.js"></script>
     <script>
-        // $("#mygrid").jqxGrid('init');
 
         $(document).ready(function(){
 
             var jsonValue = [
-    {"Code":"1" ,"Name":"John", "Family":"Doe"},
-    {"Code":"2" ,"Name":"Anna", "Family":"Smith"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
-    {"Code":"3" ,"Name":"Peter", "Family":"Jones"}];
-
-
+                {"Code":"1" ,"Name":"John", "Family":"Doe", "Age":"33"},
+                {"Code":"2" ,"Name":"Anna", "Family":"Smith", "Age":"24"},
+                {"Code":"3" ,"Name":"Peter", "Family":"Jones", "Age":"13"},];
             
             $("#mygrid").jqxGrid({
                 backColor: 'yellow',
                 color: 'black',
                 checkbox: false,
                 source: { url: jsonValue, debugDelay: 1000 }
-            });
-
-            
-
-            $("button").click(function(){ 
-                $('#x').load('demos\data.json');
             });
         });
 
@@ -58,9 +35,6 @@
         <h2>Jquery Grid Widgets</h2>
         <p>This table is responsive. </p>
 
-        <button>Click to Load Data</button>
-        <div id="x"></div>
-
         <div id="mygrid">
             <table>
                 <thead>
@@ -68,6 +42,7 @@
                         <th>Code</th>
                         <th>Name</th>
                         <th>Family</th>
+                        <th>Age</th>
                     </tr>
                 </thead>
                 <tbody>

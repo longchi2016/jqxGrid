@@ -32,8 +32,6 @@
         init: function (data) {
             // create table code here
             this.find('table').addClass("table table-hover table-responsive");
-            //this.find('tbody').append("<tr><td>1</td><td>Ali</td><td>Ahmadi</td></tr><tr><td>2</td><td>nasim</td><td>maleki</td></tr><tr><td>3</td><td>Aioub</td><td>Amini</td></tr>");
-            //alert(data.source.url);
             this.find('table').append(makeTable(data.source.url));
             this.find('thead').css({ 'background-color': settings.backColor, 'color': settings.color });
         },
