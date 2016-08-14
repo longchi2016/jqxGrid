@@ -14,15 +14,41 @@
 
         $(document).ready(function(){
 
-            var url = "/demos/data.json";
+            var jsonValue = [
+    {"Code":"1" ,"Name":"John", "Family":"Doe"},
+    {"Code":"2" ,"Name":"Anna", "Family":"Smith"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"},
+    {"Code":"3" ,"Name":"Peter", "Family":"Jones"}];
 
+
+            
             $("#mygrid").jqxGrid({
                 backColor: 'yellow',
                 color: 'black',
                 checkbox: false,
-                source: { url: url, debugDelay: 1000 }
+                source: { url: jsonValue, debugDelay: 1000 }
+            });
+
+            
+
+            $("button").click(function(){ 
+                $('#x').load('demos\data.json');
             });
         });
+
     </script>
 </head>
 
@@ -31,6 +57,9 @@
     <div class="container">
         <h2>Jquery Grid Widgets</h2>
         <p>This table is responsive. </p>
+
+        <button>Click to Load Data</button>
+        <div id="x"></div>
 
         <div id="mygrid">
             <table>

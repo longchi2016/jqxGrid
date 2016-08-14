@@ -14,31 +14,28 @@
 
     "use strict";
 
-    function createTableBody(source) {
-        var tr;
-        for (var i = 0; i < source.length; i++) {
-            tr = $('<tr/>');
-            tr.append("<td>" + source[i] + "</td>");
-        }
-        this.find('tbody').append(tr);
+    function makeTable(data) {
+
+        var body = $("<tbody/>");
+        $.each(data, function (rowIndex, r) {
+            var row = $("<tr/>");
+            $.each(r, function (colIndex, c) {
+                row.append($("<td/>").text(c));
+            });
+            body.append(row);
+        });
+        return body;
     };
 
-    // Default options
-    var defualts = {
-        backColor: 'yellow',
-        color: 'black',
-        checkbox: false,
-        source: { url: "demos\data.json", debugDelay: 1000 },
-    };
-
+    
     var methods = {
-        init: function (options) {
+        init: function (data) {
             // create table code here
             this.find('table').addClass("table table-hover table-responsive");
             //this.find('tbody').append("<tr><td>1</td><td>Ali</td><td>Ahmadi</td></tr><tr><td>2</td><td>nasim</td><td>maleki</td></tr><tr><td>3</td><td>Aioub</td><td>Amini</td></tr>");
-            createTableBody(options.source);
+            //alert(data.source.url);
+            this.find('table').append(makeTable(data.source.url));
             this.find('thead').css({ 'background-color': settings.backColor, 'color': settings.color });
-
         },
         destroy: function () {
             // destroy table code here
