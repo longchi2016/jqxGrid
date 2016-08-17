@@ -16,24 +16,33 @@
 
     function makeTable(data) {
 
-        var body = $("<tbody/>");
+        var $tbody = $("<tbody/>");
         $.each(data, function (rowIndex, r) {
-            var row = $("<tr/>");
+            var $row = $("<tr/>");
             $.each(r, function (colIndex, c) {
-                row.append($("<td/>").text(c));
+                $row.append($("<td/>").text(c));
             });
-            body.append(row);
+            $tbody.append($row);
         });
-        return body;
+        return $tbody;
     };
 
-    
+
     var methods = {
         init: function (data) {
-            // create table code here
-            this.find('table').addClass("table table-hover table-responsive");
-            this.find('table').append(makeTable(data.source.url));
-            this.find('thead').css({ 'background-color': settings.backColor, 'color': settings.color });
+
+            data = $.extend({}, $.fn.jqxGrid.defaults, data);
+
+            return this.each(function () {
+                //var elem = this.find('table');
+                var elem = $(this);
+                elem.addClass("table table-hover table-responsive");
+                elem.append(makeTable(data.source.url));
+                elem.find('thead').css(
+                    { 'background-color': data.backColor, 'color': data.color }
+                );
+            });
+
         },
         destroy: function () {
             // destroy table code here
