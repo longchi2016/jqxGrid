@@ -17,14 +17,21 @@
     function makeTable(data) {
 
         var $tbody = $("<tbody/>");
-        $.each(data, function (rowIndex, r) {
+        $.each(data.source.url, function (rowIndex, r) {
             var $row = $("<tr/>");
+            if (data.checkbox) {
+                $row.append($("<td/>").html('<input type="checkbox"/>'));
+            }
             $.each(r, function (colIndex, c) {
                 $row.append($("<td/>").text(c));
+
             });
+
             $tbody.append($row);
         });
         return $tbody;
+
+        
     };
 
 
@@ -34,10 +41,9 @@
             data = $.extend({}, $.fn.jqxGrid.defaults, data);
 
             return this.each(function () {
-                //var elem = this.find('table');
                 var elem = $(this);
                 elem.addClass("table table-hover table-responsive");
-                elem.append(makeTable(data.source.url));
+                elem.append(makeTable(data));
                 elem.find('thead').css(
                     { 'background-color': data.backColor, 'color': data.color }
                 );
