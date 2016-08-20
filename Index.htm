@@ -102,7 +102,9 @@
                     id: "Id",
                     datatype: "json", 
                     debugDelay: 1000 
-                }
+                },
+                expandable: true,
+                draggable: true
             });
         });
 
@@ -119,6 +121,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th><input type="checkbox"/></th>
                         <th>Id</th>
                         <th>Name</th>
                         <th>Type</th>

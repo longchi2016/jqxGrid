@@ -14,41 +14,32 @@
 
     "use strict";
 
-    function makeTable(data) {
-
-        var $tbody = $("<tbody/>");
-        $.each(data.source.url, function (rowIndex, r) {
-            var $row = $("<tr/>");
-            if (data.checkbox) {
-                $row.append($("<td/>").html('<input type="checkbox"/>'));
-            }
-            $.each(r, function (colIndex, c) {
-                $row.append($("<td/>").text(c));
-
-            });
-
-            $tbody.append($row);
-        });
-        return $tbody;
-
-        
-    };
-
-
     var methods = {
-        init: function (data) {
+        initTable: function (options) {
 
-            data = $.extend({}, $.fn.jqxGrid.defaults, data);
+            var settings = $.extend({}, $.fn.jqxGrid.defaults, options);
+
+            var $tbody = $("<tbody/>");
+            $.each(settings.source.url, function (rowIndex, r) {
+                var $row = $("<tr/>");
+                if (settings.checkbox) {
+                    $row.append($("<td/>").html('<input type="checkbox"/>'));
+                }
+                $.each(r, function (colIndex, c) {
+                    $row.append($("<td/>").text(c));
+                });
+
+                $tbody.append($row);
+            });
 
             return this.each(function () {
                 var elem = $(this);
-                elem.addClass("table table-hover table-responsive");
-                elem.append(makeTable(data));
+                elem.find('table').addClass("table table-hover table-responsive");
+                elem.find('table').append($tbody);
                 elem.find('thead').css(
-                    { 'background-color': data.backColor, 'color': data.color }
+                    { 'background-color': settings.backColor, 'color': settings.color }
                 );
             });
-
         },
         destroy: function () {
             // destroy table code here
@@ -62,7 +53,7 @@
                 Array.prototype.slice.call(arguments, 1)
             );
         } else if ($.type(method) === 'object') {
-            return methods.init.apply(this, arguments);
+            return methods.initTable.apply(this, arguments);
         } else {
             $.error('Method ' + method +
                 ' does not exist on jQuery.jqiaPhotomatic'
