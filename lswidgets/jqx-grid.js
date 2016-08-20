@@ -41,6 +41,16 @@
                 );
             });
         },
+        /**
+         * Method return all root nodes of tree.
+         *
+         * Start init all child nodes from it.
+         *
+         * @returns {Array}
+         */
+        getRootNodes: function() {
+            return $(this).treegrid('getSetting', 'getRootNodes').apply(this, [$(this).treegrid('getTreeContainer')]);
+        },
         destroy: function () {
             // destroy table code here
         }
