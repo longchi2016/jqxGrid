@@ -33,23 +33,27 @@
             });
 
             return this.each(function () {
-                var elem = $(this);
-                elem.find('table').addClass("table table-hover table-responsive");
-                elem.find('table').append($tbody);
-                elem.find('thead').css(
-                    { 'background-color': settings.backColor, 'color': settings.color }
-                );
+                var $elem = $(this);
+                $elem.jqxGrid('setContainer', $(this));
+                $elem.find('table').addClass("table table-hover table-responsive");
+                $elem.find('table').append($tbody);                
+                $elem.jqxGrid('setSettings', settings);
             });
         },
-        /**
-         * Method return all root nodes of tree.
-         *
-         * Start init all child nodes from it.
-         *
-         * @returns {Array}
-         */
-        getRootNodes: function() {
+        // get root nodes of tree  level=0
+        getRootNodes: function () {
             return $(this).treegrid('getSetting', 'getRootNodes').apply(this, [$(this).treegrid('getTreeContainer')]);
+        },
+        setSettings: function (settings) {
+            //$(this).data('settings', settings);
+            $(this).jqxGrid('getContainer').find('thead').css(
+                { 'background-color': settings.backColor, 'color': settings.color });  
+        },
+        getContainer: function () {
+            return $(this).data('jqxGrid'); 
+        },
+        setContainer: function(container) {
+            $(this).data('jqxGrid', container);
         },
         destroy: function () {
             // destroy table code here
